@@ -55,7 +55,7 @@ function Shopping({cart, setCart}) {
 }
 const Image = styled.img`
   width: 250px;
-  height: 30vh;
+  height: 25vh;
   border-radius: 10px;
 `
 const UlContainer = styled.ul`
