@@ -1,9 +1,8 @@
 import { plantList } from "../Datas/donnee";
-import "../Style/Shopping.css";
 import Emoji from "./Emoji";
-import "../Style/Banner.css";
 import { useState } from "react";
 import Categorie from "./Categories";
+import styled from "styled-components";
 
 function Shopping({cart, setCart}) {
   const [catego, setCatego] = useState("");
@@ -30,12 +29,12 @@ function Shopping({cart, setCart}) {
   return (
     <div>
       <Categorie catego={catego} setCatego={setCatego} />
-      <ul className="plantList">
+      <UlContainer className="plantList">
         {plantList.map(
           ({ name, price, cover, light, water, id, category }, index) =>
             !catego || catego === category ? (
               <li key={`${id}-${index}`}>
-                <img
+                <Image
                   src={cover}
                   alt=""
                   onClick={() => imgClick({ name, light, water })}
@@ -50,8 +49,21 @@ function Shopping({cart, setCart}) {
               </li>
             ) : null
         )}
-      </ul>
+      </UlContainer>
     </div>
   );
 }
+const Image = styled.img`
+  width: 250px;
+  height: 30vh;
+  border-radius: 10px;
+`
+const UlContainer = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  gap: 2%;
+  list-style: none;
+
+`
 export default Shopping;

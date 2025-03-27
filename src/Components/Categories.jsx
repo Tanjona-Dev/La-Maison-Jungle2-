@@ -1,5 +1,4 @@
 import { plantList } from "../Datas/donnee";
-import "../Style/Categorie.css";
 
 function Categorie({ catego, setCatego }) {
   const categor = plantList.reduce(

@@ -1,28 +1,61 @@
-import '../Style/Panier.css'
-import { useState } from 'react';
+import { useState, useEffect } from "react";
+import styled from "styled-components";
 
-function Panier({cart, setCart}) {
-    const [isOpen, setIsOpen] = useState(true)
-    const Total = cart.reduce((acc, plant)=> acc + plant.amount * plant.price,0)
+function Panier({ cart, setCart }) {
+  const [isOpen, setIsOpen] = useState(true);
+  const Total = cart.reduce(
+    (acc, plant) => acc + plant.amount * plant.price,
+    0
+  );
+
+  useEffect(() => {
+    localStorage.setItem("stcokPanier", JSON.stringify(cart));
+  }, [cart]);
+
   return isOpen ? (
-    <div className='panier'>
-        <button onClick={()=> setIsOpen(false)}>fermer</button>
+    <Container>
+      <Boutton onClick={() => setIsOpen(false)}>fermer</Boutton>
       <h3>Panier</h3>
-      <ul>
-        {cart.map(({name, price, amount},index)=> <li key={index}>
-            🌿
-            ({amount})
-            {name}
+      <Ul>
+        {cart.map(({ name, price, amount }, index) => (
+          <li key={index}>
+            🌿 ({amount}){name}
             <br />
             Prix : {price} euro
-        </li>)}
-      </ul>
+          </li>
+        ))}
+      </Ul>
       <span>Total : {Total} euro</span>
-      <button onClick={()=>setCart([])}>vider</button>
-    </div>
-
+      <br />
+      <Boutton onClick={() => setCart([])}>vider</Boutton>
+    </Container>
   ) : (
-    <button onClick={()=>setIsOpen(true)}>Ouvrir le Panier</button>
-  )
+    <Boutton2 onClick={() => setIsOpen(true)}>Ouvrir le Panier</Boutton2>
+  );
 }
+const Container = styled.div`
+  background-color: rgb(102, 172, 137, 0.9);
+  width: 250px;
+
+  @media (max-width: 380px) {
+    font-size: 0.7em;
+    text-align: left;
+  }
+`;
+const Boutton = styled.button`
+  margin-top: 3px;
+  width: 95%;
+`;
+const Ul = styled.ul`
+  list-style: none;
+  padding-left: 0;
+  margin-left: 10px;
+`;
+const Boutton2 = styled.button`
+  height: 50px;
+  @media (max-width: 380px) {
+    font-size: 0.6em;
+    margin-top: 45px;
+  }
+`;
 export default Panier;
