@@ -22,8 +22,8 @@ function Home() {
       <Panier>
         <Cart cart={cart} setCart={setCart} />
       </Panier>
-      <div>
-        <h1>La Maison Jungle</h1>
+      <Container2>
+        <H1>La Maison Jungle</H1>
         <Ul>
           {plantList.map(({ name, cover, id, water, light, price }, index) => (
             <li key={`${index}-${id}`}>
@@ -42,7 +42,7 @@ function Home() {
             </li>
           ))}
         </Ul>
-      </div>
+      </Container2>
     </Container>
   );
 }
@@ -55,6 +55,11 @@ const Image = styled.img`
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 
+  @media(max-width: 768px){
+    width: 200px;
+    height: 200px;
+  }
+
   &:hover {
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3);
 `;
@@ -63,6 +68,7 @@ const Ul = styled.ul`
   flex-wrap: wrap;
   gap: 10px;
   list-style: none;
+  padding: 0;
 `;
 const SpanPrice = styled.span`
   position: absolute;
@@ -88,16 +94,29 @@ const ImgContainer = styled.div`
 `;
 const Container = styled.div`
   display: flex;
-  justify-content: space-between;
   flex-direction: row;
+  width: 100%; /* Assurer que le container prend toute la largeur disponible */
+  gap: 10px; /* Espacement entre les éléments */
 `;
 const Panier = styled.div`
-
+  width: 30vw; /* Taille du panier */
   @media (max-width: 768px) {
-    max-width: 25vw;
-    margin: -24px;
+    width: 100%; /* Prendre toute la largeur sur les petits écrans */
+    margin-left: -20px;
     padding: 0;
-    text-align: left;
   }
 `;
+const H1 = styled.h1`
+  @media(max-width: 768px){
+    font-size: 1.5em;
+  }
+`
+const Container2 = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-around; /* Répartir les éléments de manière uniforme */
+  width: calc(100% - 35vw); /* Occupation restante de la largeur après le panier */
+`;
+
 export default Home;
