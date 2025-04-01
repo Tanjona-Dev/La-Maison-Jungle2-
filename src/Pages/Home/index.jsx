@@ -97,6 +97,10 @@ const Container = styled.div`
   flex-direction: row;
   width: 100%; /* Assurer que le container prend toute la largeur disponible */
   gap: 10px; /* Espacement entre les éléments */
+  @media(max-width: 768px){
+    justify-content: space-between;
+    
+  }
 `;
 const Panier = styled.div`
   width: 30vw; /* Taille du panier */
