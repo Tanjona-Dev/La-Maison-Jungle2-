@@ -101,7 +101,7 @@ const Container = styled.div`
 const Panier = styled.div`
   width: 30vw; /* Taille du panier */
   @media (max-width: 768px) {
-    width: 100%; /* Prendre toute la largeur sur les petits écrans */
+    width: 30%; /* Prendre toute la largeur sur les petits écrans */
     margin-left: -20px;
     padding: 0;
   }
