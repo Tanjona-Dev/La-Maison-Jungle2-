@@ -113,7 +113,7 @@ Error generating stack: `+l.message+`
 `,K1=ge.div`
   width: 30vw; /* Taille du panier */
   @media (max-width: 768px) {
-    width: 100%; /* Prendre toute la largeur sur les petits écrans */
+    width: 30%; /* Prendre toute la largeur sur les petits écrans */
     margin-left: -20px;
     padding: 0;
   }
